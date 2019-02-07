@@ -16,10 +16,6 @@
     <div class="jumbotron">
       <h2 class="text-center">Firebase Train Scheduler</h2>
     </div>
-
-
-
-
     <div class="card" id="train-schedule-card">
       <div class="card-header">
         Current Train Schedule
@@ -36,35 +32,16 @@
             </tr>
           </thead>
           <tbody id="table-body">
-            <tr>
-              <td>1</td>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
+            <!-- Table rows will be populated from Firebase -->
           </tbody>
         </table>
       </div>
     </div>
-
     <div class="card" id="add-train-card">
       <div class="card-header">
         Add Train
       </div>
       <div class="card-body">
-
         <form>
           <div class="form-group">
             <label for="input-train-name">Train Name</label>
@@ -84,25 +61,18 @@
           </div>
           <button type="submit" class="btn btn-primary" id="submit-train">Submit</button>
         </form>
-
-
       </div>
     </div>
-
   </div>
+  <div id="dateBox"></div>
 
 
 
 
-
-
-
-
-
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
   <script src="assets/javascript/main.js"></script>
-
 </body>
 
 </html>
