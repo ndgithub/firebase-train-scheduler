@@ -7,13 +7,8 @@ var config = {
     messagingSenderId: "595361391083"
 };
 firebase.initializeApp(config);
-
 var db = firebase.firestore();
-
 var trains = [];
-
-
-
 
 db.collection('trains').orderBy('name').onSnapshot(function (snapshot) {
     trains = snapshot.docs.map(function (doc) {
@@ -28,40 +23,27 @@ db.collection('trains').orderBy('name').onSnapshot(function (snapshot) {
         tr.append("<td>" + trains[i].frequency + "</td>");
         var nextTrain = getNextTime(trains[i].time, trains[i].frequency); // trains.time is start time
 
-
         tr.append("<td>" + nextTrain + "</td>");
         var minutesAway = getMinutesAway(trains[i].time, trains[i].frequency)
         tr.append("<td>" + minutesAway + "</td>");
-
         tableBody.append(tr);
     }
 });
 
 db.collection('trains').doc("WoeqSmrQ3wr8Yt4v1cC4").delete().then(console.log('deleted'));
 
-// 15:00 - 3pm
-
-
-
 function getNextTime(firstTime, frequency) {
     var firstTimeConverted = moment(firstTime, "HH:mm")
-    console.log("firstTimeConverted" + firstTimeConverted);
     // Current Time
     var currentTime = moment();
-    console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
     // Difference between the times
     var diffTime = currentTime.diff(firstTimeConverted, "minutes");
-    console.log("DIFFERENCE IN TIME: " + diffTime);
     // Time apart (remainder)
     var remainder = diffTime % frequency;
-    console.log('frequency', frequency);
-
     // Minute Until Train
     var tMinutesTillTrain = frequency - remainder;
-    console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
     // Next Train
     var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm");
-    console.log("ARRIVAL TIME: " + nextTrain);
     return nextTrain;
 }
 
