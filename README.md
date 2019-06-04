@@ -1,5 +1,5 @@
  <p align="center">
-  <img width="50%" src="public/assets/train-screenshot.png">
+  <img width="50%" src="assets/train-screenshot.png">
 
 
 # Firebase Train Scheduler
